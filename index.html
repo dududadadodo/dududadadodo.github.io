@@ -2893,8 +2893,9 @@
     <!-- .main-container close -->
     <script>
       function handleCheck(e){
-window.ReactNativeWebView.postMessage("god bless me");
+
         let data = e.currentTarget.dataset.id
+        window.ReactNativeWebView.postMessage("god bless me", data);
         if(!!data && document.getElementById(data)){
         anime({
         targets: '#'+data,

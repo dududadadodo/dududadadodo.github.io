@@ -2894,6 +2894,7 @@
     <script>
       function handleCheck(e){
         window.postMessage("Sending data from WebView");
+window.ReactNativeWebView.postMessage(data);
         let data = e.currentTarget.dataset.id
         if(!!data && document.getElementById(data)){
         anime({

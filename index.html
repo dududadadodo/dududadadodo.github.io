@@ -2893,6 +2893,7 @@
     <!-- .main-container close -->
     <script>
       function handleCheck(e){
+        window.postMessage("Sending data from WebView");
         let data = e.currentTarget.dataset.id
         if(!!data && document.getElementById(data)){
         anime({

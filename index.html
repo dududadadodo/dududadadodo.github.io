@@ -2895,9 +2895,9 @@
       function handleCheck(e){
 
         let data = e.currentTarget.dataset.id
-        
+        window.ReactNativeWebView.postMessage(data);
         if(!!data && document.getElementById(data)){
-window.ReactNativeWebView.postMessage(data);
+
         anime({
         targets: '#'+data,
         translateX: ['-.1rem', '.1rem'],

@@ -1,4 +1,5 @@
 body{
+    overflow: hidden;
 }
 #isomatric-city {
     /* position: absolute; */
@@ -10,7 +11,7 @@ body{
     /* height: 100vh; */
     max-width: 100%;
     margin: auto;
-
+    overflow: hidden;
     max-height: 100%;
 }
 

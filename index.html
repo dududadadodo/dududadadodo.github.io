@@ -2893,8 +2893,12 @@
     <!-- .main-container close -->
     <script>
       function handleCheck(e){
+
         let data = e.currentTarget.dataset.id
+        if(window.ReactNativeWebView)
+        window.ReactNativeWebView.postMessage(data);
         if(!!data && document.getElementById(data)){
+
         anime({
         targets: '#'+data,
         translateX: ['-.1rem', '.1rem'],

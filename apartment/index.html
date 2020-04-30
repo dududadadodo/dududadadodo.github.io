@@ -618,6 +618,9 @@
       function getMessage(e){
         if(e.data){
           if(e.data.name == "address"){
+
+
+            alert("sda ve", e.data.value)
             var obj = document.getElementById("address");
             let box = obj.getBBox();
             let text = document.createElementNS("http://www.w3.org/2000/svg", "text");

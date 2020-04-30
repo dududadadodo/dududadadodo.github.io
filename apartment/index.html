@@ -616,21 +616,21 @@
 
   
       function getMessage(e){
-        alert("sha2", e.data)
-          // let data = JSON.parse(e.data)
-          // if(data.name == "address"){
+        alert(e.data)
+          let data = JSON.parse(e.data)
+          if(data.name == "address"){
 
-          //   alert("sda ve", data.value)
-          //   var obj = document.getElementById("address");
-          //   let box = obj.getBBox();
-          //   let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-          //   text.innerHTML = data.value;
-          //   text.setAttribute("x", box.x)
-          //   text.setAttribute("y", box.y)
-          //   text.setAttribute("transform", "skewY(30)")
-          //   document.getElementById("addresstext").appendChild(text)
+            // alert(data.value)
+            var obj = document.getElementById("address");
+            let box = obj.getBBox();
+            let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.innerHTML = data.value;
+            text.setAttribute("x", box.x)
+            text.setAttribute("y", box.y)
+            text.setAttribute("transform", "skewY(30)")
+            document.getElementById("addresstext").appendChild(text)
 
-          // }
+          }
    
       }
       function handle(e) {

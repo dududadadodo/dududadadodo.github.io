@@ -614,8 +614,22 @@
       }
 
 
+  
       function getMessage(e){
-        alert(JSON.stringify(e.data))
+        if(e.data){
+          if(e.data.name == "address"){
+            var obj = document.getElementById("address");
+            let box = obj.getBBox();
+            let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.innerHTML = e.data.value;
+            text.setAttribute("x", box.x)
+            text.setAttribute("y", box.y)
+            text.setAttribute("transform", "skewY(30)")
+            document.getElementById("addresstext").appendChild(text)
+
+          }
+        }
+   
       }
       function handle(e) {
         var obj = e.currentTarget;
@@ -627,16 +641,6 @@
         setViewPort(vx, vy);
         if(window.ReactNativeWebView && obj.id)
         window.ReactNativeWebView.postMessage(obj.id)
-
-        if(obj.id == "address"){
-          let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-          text.innerHTML = "hhahahha sda"
-          text.setAttribute("x", box.x)
-          text.setAttribute("y", box.y)
-          text.setAttribute("transform", "skewY(30)")
-          document.getElementById("addresstext").appendChild(text)
-
-        }
 
         // if(!sidebar.classList.contains("show"))
         // document.getElementById("isomatric-property").classList.toggle("show");

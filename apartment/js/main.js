@@ -11,10 +11,10 @@
 
 $(function() {
     
-    var $building1 = $('#building1'),
-        $building2 = $('#building2'),
-        $building3 = $('#building3'),
-        $building4 = $('#building4'),
+    var $building1 = $('#playground'),
+        $building2 = $('#garden'),
+        $building3 = $('#parking'),
+        $building4 = $('#accomm'),
         $building5 = $('#building5'),
         $building6 = $('#building6'),
         $building7 = $('#building7'),
@@ -613,8 +613,8 @@ $(function() {
       .add(getGardenTl(), 'building5-=0.9')
       .fromTo($roads, 0.5, {autoAlpha:0}, {autoAlpha:1, ease:Linear.easeNone}, 'garden-=1')
       .add(getBuildingHordingTl(), 'garden-=0.5')
-      // .add([getRedCarTl(), getBlueCarStTl()], 'garden+=0.5')
-      // .add([getBlueCarTl(), getRedCarStTl()], 'garden+=1.5');
+      .add([getRedCarTl(), getBlueCarStTl()], 'garden+=0.5')
+      .add([getBlueCarTl(), getRedCarStTl()], 'garden+=1.5');
   }
   init();
 

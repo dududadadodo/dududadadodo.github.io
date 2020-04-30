@@ -616,11 +616,8 @@
 
   
       function getMessage(e){
-        alert(e.data)
           let data = JSON.parse(e.data)
           if(data.name == "address"){
-
-            // alert(data.value)
             var obj = document.getElementById("address");
             let box = obj.getBBox();
             let text = document.createElementNS("http://www.w3.org/2000/svg", "text");

@@ -616,16 +616,16 @@
 
   
       function getMessage(e){
-        alert("sha2", JSON.stringify(e.data))
+        alert("sha2", e.data)
         if(e.data){
-          if(e.data.name == "address"){
+          let data = JSON.parse(e.data)
+          if(data.name == "address"){
 
-
-            alert("sda ve", e.data.value)
+            alert("sda ve", data.value)
             var obj = document.getElementById("address");
             let box = obj.getBBox();
             let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            text.innerHTML = e.data.value;
+            text.innerHTML = data.value;
             text.setAttribute("x", box.x)
             text.setAttribute("y", box.y)
             text.setAttribute("transform", "skewY(30)")

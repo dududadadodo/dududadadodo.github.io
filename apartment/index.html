@@ -618,15 +618,20 @@
       function getMessage(e){
           let data = JSON.parse(e.data)
           if(data.name == "address"){
-            var obj = document.getElementById("address");
-            let box = obj.getBBox();
-            let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            text.innerHTML = data.value;
-            text.setAttribute("x", box.x)
-            text.setAttribute("y", box.y)
-            text.setAttribute("transform", "skewY(30)")
-            document.getElementById("addresstext").appendChild(text)
-
+            if(document.getElementById("addresscustom")){
+              document.getElementById("addresscustom").innerHTML = dada.value
+            }
+            else {
+              var obj = document.getElementById("address");
+              let box = obj.getBBox();
+              let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+              text.innerHTML = data.value;
+              text.setAttribute("id", "addresscustom")
+              text.setAttribute("x", box.x)
+              text.setAttribute("y", box.y)
+              text.setAttribute("transform", "skewY(30)")
+              document.getElementById("addresstext").appendChild(text)
+            }
           }
    
       }

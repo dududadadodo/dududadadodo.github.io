@@ -619,7 +619,7 @@
           let data = JSON.parse(e.data)
           if(data.name == "address"){
             if(document.getElementById("addresscustom")){
-              document.getElementById("addresscustom").innerHTML = dada.value
+              document.getElementById("addresscustom").innerHTML = data.value
             }
             else {
               var obj = document.getElementById("address");
@@ -633,7 +633,6 @@
               document.getElementById("addresstext").appendChild(text)
             }
           }
-   
       }
       function handle(e) {
         var obj = e.currentTarget;

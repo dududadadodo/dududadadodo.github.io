@@ -25,6 +25,7 @@ body{
 
 .zoom-contrl {
     position: fixed;
+    display: none;
     
 }
 

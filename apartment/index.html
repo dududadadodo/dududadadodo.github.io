@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <div class="zoom-contrl">
+    <!-- <div class="zoom-contrl">
       <div class="zoom-out">
         OUT
       </div>
@@ -29,7 +29,7 @@
         IN
       </div>
       <div class="viewbox"></div>
-    </div>
+    </div> -->
     <div class="container">
     <div id="isomatric-city">
       <?xml version="1.0" encoding="utf-8"?>
@@ -658,8 +658,8 @@
       if(window.ReactNativeWebView){
         window.addEventListener("message", getMessage, false)
       }
-      zoomin.addEventListener("click", onZoomIn);
-      zoomout.addEventListener("click", onZoomOut);
+      // zoomin.addEventListener("click", onZoomIn);
+      // zoomout.addEventListener("click", onZoomOut);
       let buildings = document.querySelectorAll(".building");
       buildings.forEach((e) => e.addEventListener("click", handle, false));
     </script>

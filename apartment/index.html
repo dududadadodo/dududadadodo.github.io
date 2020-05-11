@@ -562,7 +562,7 @@
         var viewBoxString = `${newViewBox.x} ${newViewBox.y} ${viewBox.width} ${viewBox.height}`;
         svg.setAttribute("viewBox", viewBoxString);
         console.log(viewBoxString);
-        document.querySelector(".viewbox").innerHTML = viewBoxString;
+        // document.querySelector(".viewbox").innerHTML = viewBoxString;
       }
       function onPointerDown(event) {
         isPointerDown = true;
@@ -595,7 +595,7 @@
       function setViewPort(x, y) {
         var viewBoxString = `${x} ${y} ${viewBox.width} ${viewBox.height}`;
         svg.setAttribute("viewBox", viewBoxString);
-        document.querySelector(".viewbox").innerHTML = viewBoxString;
+        // document.querySelector(".viewbox").innerHTML = viewBoxString;
       }
 
       function onZoomIn() {

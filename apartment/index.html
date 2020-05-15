@@ -561,7 +561,6 @@
 
         var viewBoxString = `${newViewBox.x} ${newViewBox.y} ${viewBox.width} ${viewBox.height}`;
         svg.setAttribute("viewBox", viewBoxString);
-        console.log(viewBoxString);
         document.querySelector(".viewbox").innerHTML = viewBoxString;
       }
       function onPointerDown(event) {

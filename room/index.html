@@ -250,13 +250,20 @@
         var dh = h * Math.sign(e.deltaY) * 0.05;
         var dx = dw * mx / svgSize.width;
         var dy = dh * my / svgSize.height;
-        viewBox
+        viewBox.x = viewBox.x + dx;
+        viewBox.y = viewBox.y + dy;
+        viewBox.width = viewBox.width - dw;
+        viewBox.height = viewBox.height - dy;
+        setViewPort(viewBox.x, viewBox.y, viewBox.width, viewBox.height);
+        scale = svgSize.width / viewBox.width;
+
       }
       if (window.PointerEvent) {
         svg.addEventListener("pointerdown", onPointerDown); 
         svg.addEventListener("pointerup", onPointerUp);
         svg.addEventListener("pointerleave", onPointerUp);
         svg.addEventListener("pointermove", onPointerMove);
+        svg.addEventListener("wheel", onWheel);
       } else {
         svg.addEventListener("mousedown", onPointerDown); 
         svg.addEventListener("mouseup", onPointerUp); 
@@ -268,8 +275,8 @@
         svg.addEventListener("wheel", onWheel);
       }
 
-      function setViewPort(x, y) {
-        var viewBoxString = `${x} ${y} ${viewBox.width} ${viewBox.height}`;
+      function setViewPort(x, y, width = viewBox.width, height = viewBox.height) {
+        var viewBoxString = `${x} ${y} ${width} ${height}`;
         svg.setAttribute("viewBox", viewBoxString);
         document.querySelector(".viewbox").innerHTML = viewBoxString;
       }

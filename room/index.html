@@ -225,7 +225,7 @@
         newViewBox.x = viewBox.x - (pointerPosition.x - pointerOrigin.x);
         newViewBox.y = viewBox.y - (pointerPosition.y - pointerOrigin.y);
 
-        var viewBoxString = `${newViewBox.x * scale} ${newViewBox.y * scale} ${viewBox.width} ${viewBox.height}`;
+        var viewBoxString = `${newViewBox.x } ${newViewBox.y } ${viewBox.width} ${viewBox.height}`;
         svg.setAttribute("viewBox", viewBoxString);
         document.querySelector(".viewbox").innerHTML = viewBoxString;
       }
@@ -250,11 +250,13 @@
         var dh = h * Math.sign(e.deltaY) * 0.05;
         var dx = dw * mx / svgSize.width;
         var dy = dh * my / svgSize.height;
-        viewBox.x = viewBox.x + dx;
-        viewBox.y = viewBox.y + dy;
+        newViewBox.x = viewBox.x + dx
+        newViewBox.y = viewBox.y + dy;
+        viewBox.x = newViewBox.x;
+        viewBox.y = newViewBox.y + dy;
         viewBox.width = viewBox.width - dw;
         viewBox.height = viewBox.height - dy;
-        setViewPort(viewBox.x, viewBox.y, viewBox.width, viewBox.height);
+        setViewPort(newViewBox.x, newViewBox.y, viewBox.width, viewBox.height);
         scale = svgSize.width / viewBox.width;
 
       }

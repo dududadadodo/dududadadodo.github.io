@@ -518,6 +518,8 @@
       var zoomout = document.querySelector(".zoom-out");
       var sidebar = document.getElementById("isomatric-property");
       var isPointerDown = false;
+      var scale = 1;
+      var svgSize = {width: svg.clientWidth, height: svg.clientHeight};
       var pointerOrigin = {
         x: 0,
         y: 0,
@@ -569,7 +571,25 @@
         pointerOrigin.x = pointerPosition.x;
         pointerOrigin.y = pointerPosition.y;
       }
+      function onWheel(e){
+        var w = viewBox.width;
+        var h = viewBox.height;
+        var mx = e.offsetX;
+        var my = e.offsetY;
+        var dw = w * Math.sign(e.deltaY) * 0.05;
+        var dh = h * Math.sign(e.deltaY) * 0.05;
+        var dx = dw * mx / svgSize.width;
+        var dy = dh * my / svgSize.height;
+        newViewBox.x = viewBox.x + dx
+        newViewBox.y = viewBox.y + dy;
+        viewBox.x = newViewBox.x;
+        viewBox.y = newViewBox.y + dy;
+        viewBox.width = viewBox.width - dw;
+        viewBox.height = viewBox.height - dy;
+        setViewPort(viewBox.x, viewBox.y, viewBox.width, viewBox.height);
+        scale = svgSize.width / viewBox.width;
 
+      }
       function onPointerUp() {
         isPointerDown = false;
         viewBox.x = newViewBox.x;
@@ -580,12 +600,13 @@
         svg.addEventListener("pointerup", onPointerUp);
         svg.addEventListener("pointerleave", onPointerUp);
         svg.addEventListener("pointermove", onPointerMove);
+        svg.addEventListener("wheel", onWheel);
       } else {
         svg.addEventListener("mousedown", onPointerDown); 
         svg.addEventListener("mouseup", onPointerUp); 
         svg.addEventListener("mouseleave", onPointerUp);
         svg.addEventListener("mousemove", onPointerMove);
-
+        svg.addEventListener("wheel", onWheel);
         svg.addEventListener("touchstart", onPointerDown); 
         svg.addEventListener("touchend", onPointerUp); 
         svg.addEventListener("touchmove", onPointerMove);

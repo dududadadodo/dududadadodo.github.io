@@ -531,7 +531,11 @@
         width: 1000,
         height: window.screen.height,
       };
-
+      var center = {
+        bool: false,
+        x: 0,
+        y: 0,
+      };
       var newViewBox = {
         x: 0,
         y: 0,
@@ -594,6 +598,12 @@
         isPointerDown = false;
         viewBox.x = newViewBox.x;
         viewBox.y = newViewBox.y;
+        
+        if(center.bool){
+          setViewPort(center.x, center.y);
+          viewBox.x = center.x;
+          viewBox.y = center.y;
+        }
       }
       if (window.PointerEvent) {
         svg.addEventListener("pointerdown", onPointerDown); 

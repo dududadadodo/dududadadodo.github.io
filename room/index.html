@@ -32,7 +32,7 @@
     <div class="container">
       <div id="isomatric-city">
         <?xml version="1.0" encoding="utf-8"?>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.1 657.83">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1"  viewBox="0 0 1190.1 657.83">
           <defs>
             <style>
               .cls-1 {
@@ -292,7 +292,7 @@
       rooms.forEach((ro, i) => {
         //  if(s / r > rooms.length){
         
-        objects.innerHTML += `<use xlink:href="#room"  id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
+        objects.innerHTML += `<use xlink:href="#room" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
         if ((i + 1) % (dif - 1) === 0) {
           dy += (roomCoor.y / xs) * 1.6;
           dx = 70 + (i + 1) / (dif - 1) * 200;

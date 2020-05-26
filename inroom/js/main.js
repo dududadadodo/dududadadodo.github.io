@@ -12,7 +12,7 @@
 $(function() {
     
     var $building1 = $('#playground'),
-        $building2 = $('#room1'),
+        $building2 = $('#room0'),
         $building3 = $('#room2'),
         $building4 = $('#accomm'),
         $building5 = $('#address'),

@@ -32,7 +32,11 @@
     <div class="container">
       <div id="isomatric-city">
         <?xml version="1.0" encoding="utf-8"?>
-        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1"  viewBox="0 0 1190.1 657.83">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="Layer_1"
+          viewBox="0 0 1190.1 657.83"
+        >
           <defs>
             <style>
               .cls-1 {
@@ -50,6 +54,15 @@
               .cls-5 {
                 fill: #fff;
               }
+              .cls-6 {
+                fill: #ff9999;
+              }
+              .cls-8 {
+                fill: #ff3333;
+              }
+              .cls-7 {
+                fill: #990000;
+              }
             </style>
             <g id="ground">
               <path
@@ -58,7 +71,7 @@
                 d="M594.92,0,1190.1,329.06,595.18,657.83,0,329.06Z"
               />
             </g>
-            <g id="room" >
+            <g id="room0">
               <g id="room-item">
                 <path
                   id="Path_616-9"
@@ -76,6 +89,28 @@
                   id="Path_618-9"
                   data-name="Path 618-9"
                   class="cls-3"
+                  d="M138.49,0,277,80,138.49,160,0,80Z"
+                />
+              </g>
+            </g>
+            <g id="room1">
+              <g id="room-item1">
+                <path
+                  id="Path_616-9"
+                  data-name="Path 616-9"
+                  class="cls-6"
+                  d="M138.49,159.93l.12,31.94L.2,111.88,0,79.88Z"
+                />
+                <path
+                  id="Path_617-9"
+                  data-name="Path 617-9"
+                  class="cls-7"
+                  d="M277,80l.06,32L138.62,191.88l-.13-31.94Z"
+                />
+                <path
+                  id="Path_618-9"
+                  data-name="Path 618-9"
+                  class="cls-8"
                   d="M138.49,0,277,80,138.49,160,0,80Z"
                 />
               </g>
@@ -131,7 +166,7 @@
         bool: false,
         x: 0,
         y: 0,
-      }
+      };
 
       function getPointFromEvent(event) {
         var point = { x: 0, y: 0 };
@@ -263,7 +298,6 @@
         var obj = e.currentTarget;
         let box = e.getBBox();
 
-
         // alert(box.x  + " - " + box.y);
         let x = box.x + box.width / 2;
         let y = box.y + box.height / 2;
@@ -283,43 +317,43 @@
         window.addEventListener("message", getMessage, false);
       }
 
+      function render(rooms = [1, 2, 3, 4, 8, 9] ) {
+        let ground = document.getElementById("groundobj").getBBox();
+        let room = document.getElementById("room0").getBBox();
+        let objects = document.getElementById("objects");
+        let roomCoor = {
+          x: room.x + room.width,
+          y: room.y + room.height,
+        };
+        let groundCoor = {
+          x: ground.x + ground.width,
+          y: ground.y + ground.height,
+        };
+        let xs = 1;
 
+        let s = groundCoor.x * groundCoor.y;
+        let r = roomCoor.x * roomCoor.y * xs * xs;
+        let dif = parseInt(groundCoor.x / (roomCoor.x * xs));
+        let dx = 70;
+        let dy = groundCoor.y / 2 / xs - (roomCoor.y * xs) / 2;
+        rooms.forEach((ro, i) => {
+          //  if(s / r > rooms.length){
 
+          objects.innerHTML += `<use xlink:href="#room${
+            i % 2
+          }"  onclick="handle(this);" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
+          if ((i + 1) % (dif - 1) === 0) {
+            dy += (roomCoor.y / xs) * 1.6;
+            dx = 70 + ((i + 1) / (dif - 1)) * 200;
+          } else {
+            dx += roomCoor.x / 1.6;
+            dy -= roomCoor.y / 2;
+          }
+          // }
+        });
+      }
 
-      let ground = document.getElementById("groundobj").getBBox();
-      let room = document.getElementById("room").getBBox();
-      let objects = document.getElementById("objects");
-      let roomCoor = {
-        x: room.x + room.width,
-        y: room.y + room.height,
-      };
-      let groundCoor = {
-        x: ground.x + ground.width,
-        y: ground.y + ground.height,
-      };
-      let xs = 1;
-
-      let s = groundCoor.x * groundCoor.y;
-      let r = roomCoor.x * roomCoor.y * xs * xs;
-      let dif = parseInt(groundCoor.x / (roomCoor.x * xs)) ;
-      let rooms = [1, 2, 3, 4, 8, 9];
-      let dx = 70;
-      let dy = (groundCoor.y / 2 ) / xs - (roomCoor.y * xs) / 2;
-      rooms.forEach((ro, i) => {
-        //  if(s / r > rooms.length){
-        
-        objects.innerHTML += `<use xlink:href="#room" onclick="handle(this);" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
-        if ((i + 1) % (dif - 1) === 0) {
-          dy += (roomCoor.y / xs) * 1.6;
-          dx = 70 + (i + 1) / (dif - 1) * 200;
-        } else {
-          dx += (roomCoor.x ) / 1.6;
-          dy -= (roomCoor.y) / 2;
-        }
-        // }
-      });
-
-
+      render();
       zoomin.addEventListener("click", onZoomIn);
       zoomout.addEventListener("click", onZoomOut);
       // let buildings = document.querySelectorAll(".building");

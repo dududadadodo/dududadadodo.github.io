@@ -12,8 +12,8 @@
 $(function() {
     
     var $building1 = $('#playground'),
-        $building2 = $('#garden'),
-        $building3 = $('#parking'),
+        $building2 = $('#room1'),
+        $building3 = $('#room2'),
         $building4 = $('#accomm'),
         $building5 = $('#address'),
         $building6 = $('#building6'),

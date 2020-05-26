@@ -90,7 +90,7 @@ $(function() {
         $fancing = $('#fancing'),
         $fancingSurface = $('#fancing_surface'),
         $chairs = $('#chairs'),
-        $ground = $('#ground'),
+        $ground = $('#groudnd'),
         $roads = $('#roads'),
         $buildingSurface = $('#building_surface'),
         $redCar = $('#red_car'),

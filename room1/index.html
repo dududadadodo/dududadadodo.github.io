@@ -261,7 +261,7 @@
       }
       function handle(e) {
         var obj = e.currentTarget;
-        let box = obj.getBBox();
+        let box = e.getBBox();
         let x = box.x + box.width / 2;
         let y = box.y + box.height / 2;
         let vx = x - viewBox.width / 2;
@@ -305,7 +305,7 @@
       rooms.forEach((ro, i) => {
         //  if(s / r > rooms.length){
         
-        objects.innerHTML += `<use xlink:href="#room" onclick="${handle}();" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
+        objects.innerHTML += `<use xlink:href="#room" onclick="handle(this);" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
         if ((i + 1) % (dif - 1) === 0) {
           dy += (roomCoor.y / xs) * 1.6;
           dx = 70 + (i + 1) / (dif - 1) * 200;

@@ -262,6 +262,9 @@
       function handle(e) {
         var obj = e.currentTarget;
         let box = e.getBBox();
+
+
+        alert(e.id);
         let x = box.x + box.width / 2;
         let y = box.y + box.height / 2;
         let vx = x - viewBox.width / 2;

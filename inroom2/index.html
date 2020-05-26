@@ -318,7 +318,11 @@
       }
 
       function render(rooms = [1, 2, 3, 4, 8, 9] ) {
+        
+        let buildings = document.querySelectorAll(".building") || [];
+        buildings.forEach((e) => e.remove());
         let ground = document.getElementById("groundobj").getBBox();
+
         let room = document.getElementById("room0").getBBox();
         let objects = document.getElementById("objects");
         let roomCoor = {

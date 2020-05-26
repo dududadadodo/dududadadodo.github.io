@@ -275,23 +275,9 @@
 
       function getMessage(e) {
         let data = JSON.parse(e.data);
+      
         if (data.name === "createRoom") {
-          if (document.getElementById("addresscustom")) {
             render(data.value);
-          } else {
-            var obj = document.getElementById("address");
-            let box = obj.getBBox();
-            let text = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "text"
-            );
-            text.innerHTML = data.value;
-            text.setAttribute("id", "addresscustom");
-            text.setAttribute("x", box.x);
-            text.setAttribute("y", box.y);
-            text.setAttribute("transform", "skewY(30)");
-            document.getElementById("addresstext").appendChild(text);
-          }
         }
       }
       function handle(e) {

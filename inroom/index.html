@@ -282,6 +282,7 @@
       }
       function handle(e) {
         var obj = e.currentTarget;
+        console.log(e.id);
         let box = e.getBBox();
 
         // alert(box.x  + " - " + box.y);
@@ -293,8 +294,8 @@
         center.x = vx;
         center.y = vy;
         setViewPort(vx, vy);
-        if (window.ReactNativeWebView && obj.id)
-          window.ReactNativeWebView.postMessage(obj.id);
+        if (window.ReactNativeWebView && e.id)
+          window.ReactNativeWebView.postMessage(e.id);
 
         // if(!sidebar.classList.contains("show"))
         // document.getElementById("isomatric-property").classList.toggle("show");
@@ -303,7 +304,7 @@
         window.addEventListener("message", getMessage, false);
       }
 
-      function render(rooms = [{id: 1, room_type_id: 1}] ) {
+      function render(rooms = [{id: 1, room_type_id: 1}, {id: 2, room_type_id: 1}] ) {
         
         let buildings = document.querySelectorAll(".building") || [];
         buildings.forEach((e) => e.remove());

@@ -305,7 +305,7 @@
       rooms.forEach((ro, i) => {
         //  if(s / r > rooms.length){
         
-        objects.innerHTML += `<use xlink:href="#room" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
+        objects.innerHTML += `<use xlink:href="#room" onclick="${handle}();" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
         if ((i + 1) % (dif - 1) === 0) {
           dy += (roomCoor.y / xs) * 1.6;
           dx = 70 + (i + 1) / (dif - 1) * 200;
@@ -319,8 +319,8 @@
 
       zoomin.addEventListener("click", onZoomIn);
       zoomout.addEventListener("click", onZoomOut);
-      let buildings = document.querySelectorAll(".building");
-      buildings.forEach((e) => e.addEventListener("click", handle, false));
+      // let buildings = document.querySelectorAll(".building");
+      // buildings.forEach((e) => e.addEventListener("click", handle, false));
     </script>
   </body>
 </html>

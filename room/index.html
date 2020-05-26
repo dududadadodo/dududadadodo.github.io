@@ -127,6 +127,11 @@
         x: 0,
         y: 0,
       };
+      var center = {
+        bool: false,
+        x: 0,
+        y: 0,
+      }
 
       function getPointFromEvent(event) {
         var point = { x: 0, y: 0 };
@@ -166,6 +171,11 @@
         isPointerDown = false;
         viewBox.x = newViewBox.x;
         viewBox.y = newViewBox.y;
+        if(center.bool){
+          setViewPort(center.x, center.y);
+          viewBox.x = center.x;
+          viewBox.y = center.y;
+        }
       }
       function onWheel(e) {
         var w = viewBox.width;
@@ -256,6 +266,9 @@
         let y = box.y + box.height / 2;
         let vx = x - viewBox.width / 2;
         let vy = y - viewBox.height / 2;
+        center.bool = true;
+        center.x = vx;
+        center.y = vy;
         setViewPort(vx, vy);
         if (window.ReactNativeWebView && obj.id)
           window.ReactNativeWebView.postMessage(obj.id);

@@ -275,9 +275,9 @@
 
       function getMessage(e) {
         let data = JSON.parse(e.data);
-        if (data.name == "address") {
+        if (data.name === "createRoom") {
           if (document.getElementById("addresscustom")) {
-            document.getElementById("addresscustom").innerHTML = data.value;
+            render(data.value);
           } else {
             var obj = document.getElementById("address");
             let box = obj.getBBox();

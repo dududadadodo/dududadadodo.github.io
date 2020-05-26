@@ -275,7 +275,7 @@
 
       function getMessage(e) {
         let data = JSON.parse(e.data);
-        alert(JSON.stringify(e.data));
+        // alert(JSON.stringify(e.data));
         if (data.name === "createRoom") {
             render(data.value);
         }
@@ -303,7 +303,7 @@
         window.addEventListener("message", getMessage, false);
       }
 
-      function render(rooms = [{id: 1, room_type_id: 1}, {id: 2, room_type_id:1}, {id: 3, room_type_id: 2},{id: 4, room_type_id:2}] ) {
+      function render(rooms = [{id: 1, room_type_id: 1}] ) {
         
         let buildings = document.querySelectorAll(".building") || [];
         buildings.forEach((e) => e.remove());

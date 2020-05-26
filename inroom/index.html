@@ -281,10 +281,17 @@
         }
       }
       function handle(e) {
-        var obj = e.currentTarget;
-        console.log(e.id);
-        let box = e.getBBox();
-
+        // var obj = e.currentTarget;
+        var d = e.getBBox();;
+        let box = {
+          x: e.x.baseVal.value,
+          y: e.y.baseVal.value,
+          width: d.width,
+          height: d.height
+        }
+        
+        // console.log(e.x, e.y);
+        
         // alert(box.x  + " - " + box.y);
         let x = box.x + box.width / 2;
         let y = box.y + box.height / 2;
@@ -304,7 +311,7 @@
         window.addEventListener("message", getMessage, false);
       }
 
-      function render(rooms = [{id: 1, room_type_id: 1}, {id: 2, room_type_id: 1}] ) {
+      function render(rooms = [{id: 1, room_type_id: 1}] ) {
         
         let buildings = document.querySelectorAll(".building") || [];
         buildings.forEach((e) => e.remove());

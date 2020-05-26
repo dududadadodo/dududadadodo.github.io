@@ -71,7 +71,7 @@
                 d="M594.92,0,1190.1,329.06,595.18,657.83,0,329.06Z"
               />
             </g>
-            <g id="room0">
+            <g id="room1">
               <g id="room-item">
                 <path
                   id="Path_616-9"
@@ -93,7 +93,7 @@
                 />
               </g>
             </g>
-            <g id="room1">
+            <g id="room2">
               <g id="room-item1">
                 <path
                   id="Path_616-9"
@@ -125,7 +125,7 @@
               y="0"
               transform="scale(1, 1)"
             />
-            <!-- <use xlink:href="#room" class="building" id="room1" x="40" y="220" transform="scale(1, 1)"/> -->
+            <!-- <use xlink:href="#room" class="building" id="room2" x="40" y="220" transform="scale(1, 1)"/> -->
             <!-- <use xlink:href="#room" class="building" id="room2" x="200" y="125" transform="scale(1, 1)"/> -->
           </g>
         </svg>
@@ -303,13 +303,13 @@
         window.addEventListener("message", getMessage, false);
       }
 
-      function render(rooms = [1, 2, 3, 4, 8, 9] ) {
+      function render(rooms = [{id: 1, room_type_id: 1}, {id: 2, room_type_id:1}, {id: 3, room_type_id: 2},{id: 4, room_type_id:2}] ) {
         
         let buildings = document.querySelectorAll(".building") || [];
         buildings.forEach((e) => e.remove());
         let ground = document.getElementById("groundobj").getBBox();
 
-        let room = document.getElementById("room0").getBBox();
+        let room = document.getElementById("room1").getBBox();
         let objects = document.getElementById("objects");
         let roomCoor = {
           x: room.x + room.width,
@@ -328,9 +328,8 @@
         let dy = groundCoor.y / 2 / xs - (roomCoor.y * xs) / 2;
         rooms.forEach((ro, i) => {
           //  if(s / r > rooms.length){
-
           objects.innerHTML += `<use xlink:href="#room${
-            i % 2
+            ro.room_type_id
           }"  onclick="handle(this);" class="building" id="${i}" x="${dx}" y="${dy}" transform="scale(${xs}, ${xs})"/> `;
           if ((i + 1) % (dif - 1) === 0) {
             dy += (roomCoor.y / xs) * 1.6;

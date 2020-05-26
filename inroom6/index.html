@@ -275,7 +275,7 @@
 
       function getMessage(e) {
         let data = JSON.parse(e.data);
-        alert(e);
+        alert(JSON.stringify(e));
         if (data.name === "createRoom") {
             render(data.value);
         }

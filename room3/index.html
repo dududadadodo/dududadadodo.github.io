@@ -51,14 +51,14 @@
                 fill: #fff;
               }
             </style>
-            <g id="ground" data-name="Layer 1">
+            <g id="ground">
               <path
                 id="ground-item"
                 class="cls-1"
                 d="M594.92,0,1190.1,329.06,595.18,657.83,0,329.06Z"
               />
             </g>
-            <g id="room" data-name="Layer 1">
+            <g id="room" >
               <g id="room-item">
                 <path
                   id="Path_616-9"
@@ -264,7 +264,7 @@
         let box = e.getBBox();
 
 
-        alert(e.id);
+        alert(box.x  + " - " + box.y);
         let x = box.x + box.width / 2;
         let y = box.y + box.height / 2;
         let vx = x - viewBox.width / 2;

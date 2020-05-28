@@ -311,7 +311,7 @@
         window.addEventListener("message", getMessage, false);
       }
 
-      function render(rooms = [{id: 1, room_type_id: 1}] ) {
+      function render(rooms = [] ) {
         
         let buildings = document.querySelectorAll(".building") || [];
         buildings.forEach((e) => e.remove());
